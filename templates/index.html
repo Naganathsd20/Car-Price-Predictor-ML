@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoWorth | Used Car Price Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>🚘 AutoWorth</h1>
+
+        <p>
+            Estimate your used car's resale value using Machine Learning.
+        </p>
+
+    </div>
+
+    <form id="predictForm">
+
+        <div class="form-group">
+
+            <label>Company</label>
+
+            <select name="company" required>
+
+                {% for company in companies %}
+                <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Car Model</label>
+
+            <select name="car_models" required>
+
+                {% for model in car_models %}
+                <option value="{{ model }}">{{ model }}</option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Manufacturing Year</label>
+
+            <select name="year" required>
+
+                {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Fuel Type</label>
+
+            <select name="fuel_type" required>
+
+                {% for fuel in fuel_types %}
+                <option value="{{ fuel }}">{{ fuel }}</option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Kilometers Driven</label>
+
+            <input
+                type="number"
+                name="kilo_driven"
+                placeholder="Enter total kilometers driven"
+                required>
+
+        </div>
+
+        <button id="predictBtn" type="submit">
+            Predict Price
+        </button>
+
+    </form>
+
+    <div id="prediction"></div>
+
+</div>
+
+<footer>
+
+    Built with Python • Flask • Scikit-learn
+
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
